@@ -5,14 +5,7 @@ namespace Fluffy
 {
     public class Fluf<T>
     {
-        private readonly T local;
-        private readonly List<(Func<T, bool> rule, string error)> rules;
-
-        public Fluf(T poco)
-        {
-            local = poco;
-            rules = new List<(Func<T, bool>, string)>();
-        }
+        internal readonly List<(Func<T, bool> rule, string error)> rules = new();
 
         public Fluf<T> Define(Func<T, bool> rule, string error)
         {
@@ -28,13 +21,11 @@ namespace Fluffy
             return this;
         }
 
-        public bool ApplyRule(Func<T, bool> func) => func(local);
-
-        public (bool validation, string? error) Resolve()
+        public (bool validation, string? error) Resolve(T poco)
         {
             foreach ((var rule, string error) in rules)
             {
-                if (!rule(local))
+                if (!rule(poco))
                 {
                     return (false, error);
                 }
