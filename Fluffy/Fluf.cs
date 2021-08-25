@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Fluffy
 {
-    public class Fluf<T>
+    public abstract class Fluf<T> where T : class
     {
         internal readonly List<(Func<T, bool> rule, string error)> rules = new();
 
-        public Fluf<T> Define(Func<T, bool> rule, string error)
+        public Fluf<T> Define(Func<T, bool> rule, string errorMessage)
         {
-            rules.Add((rule, error));
+            rules.Add((rule, errorMessage));
 
             return this;
         }
