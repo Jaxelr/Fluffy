@@ -16,22 +16,26 @@ namespace Fluffy
 
         public Fluf<T> Define(Func<T, bool> rule)
         {
-            rules.Add((rule, $"Generic error message for rule {rule}"));
+            rules.Add((rule, $"Generic error message for Type {typeof(T).Name}"));
 
             return this;
         }
 
-        public (bool validation, string? error) Resolve(T poco)
+        public (bool validation, IEnumerable<string> errors) Resolve(T poco)
         {
+            List<string> errors = new();
+            bool valid = true;
+
             foreach ((var rule, string error) in rules)
             {
                 if (!rule(poco))
                 {
-                    return (false, error);
+                    valid = false;
+                    errors.Add(error);
                 }
             }
 
-            return (true, null);
+            return (valid, errors);
         }
     }
 }
