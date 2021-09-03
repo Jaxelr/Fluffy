@@ -2,7 +2,7 @@
 
 A thinly veiled validation library
 
-In essence i would want the library to function similarly to FluentValidation, but with a minimal footprint
+In essence i would want the library to function similarly to FluentValidation, in terms of API definition, but with a minimal footprint
 
 ```csharp
 
@@ -24,4 +24,6 @@ class PocoEnforcer : Validator<Poco>
 
 ```
 
-__Note__ This is on alpha stage
+But also including a bit of helpers to check for certain custom scenarios. 
+
+__Note:__ This is on alpha stage
