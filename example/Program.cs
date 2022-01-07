@@ -3,21 +3,20 @@ using System;
 
 namespace Sample.Usage
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             var poco = new Poco() { Id = 2, Name = "User not" };
             var enforcer = new PocoValidator();
 
-            var result = enforcer.Resolve(poco);
+            var (validation, errors) = enforcer.Resolve(poco);
 
             var gimme = poco.ApplyRule(d => d.Name == "Pandy");
 
-
-            if (!result.validation)
+            if (!validation)
             {
-                foreach (var error in result.errors)
+                foreach (var error in errors)
                     Console.WriteLine(error);
             }
 
