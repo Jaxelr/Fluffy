@@ -1,5 +1,8 @@
 # Fluffy
 
+> [!NOTE]
+> This library is in the alpha stage.
+
 A thinly veiled validation library
 
 ## Build and run
@@ -63,5 +66,3 @@ foreach (string error in errors)
 ```csharp
 bool matches = poco.ApplyRule(x => x.Name == "User");
 ```
-
-__Note:__ This is on alpha stage
