@@ -4,16 +4,24 @@ A thinly veiled validation library
 
 ## Build and run
 
-The library and sample target .NET 10 and require the .NET 10 SDK.
+The library, sample, and tests target .NET 10 and require the .NET 10 SDK.
 
 ```shell
 dotnet build Fluffy.sln --configuration Release
 dotnet run --project example --configuration Release
 ```
 
-GitHub Actions restores and builds the solution in Release mode and checks
-formatting and code style on pushes to `main` and on pull requests.
-There are currently no automated test projects.
+GitHub Actions restores, builds, and tests the solution in Release mode and
+checks formatting and code style on pushes to `main` and on pull requests.
+
+## Tests
+
+`tests\Fluffy.Tests` is an xUnit project with a small set of tests for validation
+results, failed-rule messages, the default error message, and `ApplyRule`.
+
+```shell
+dotnet test Fluffy.sln --configuration Release
+```
 
 ## Contributing
 

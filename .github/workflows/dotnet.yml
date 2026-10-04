@@ -21,5 +21,7 @@ jobs:
         run: dotnet restore Fluffy.sln
       - name: Build
         run: dotnet build Fluffy.sln --configuration Release --no-restore
+      - name: Test
+        run: dotnet test Fluffy.sln --configuration Release --no-build --no-restore
       - name: Check formatting and code style
         run: dotnet format Fluffy.sln --verify-no-changes --severity info --no-restore
