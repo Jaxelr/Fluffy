@@ -180,7 +180,7 @@ feat: add hat wobble
 - Fluffy is a small .NET 10 validation library with no external dependencies.
 - `src` contains the library; `example` contains the console sample;
   `tests\Fluffy.Tests` contains the xUnit tests.
-- `Fluffy.sln` includes all three projects.
+- `Fluffy.slnx` includes all three projects and the Solution Items folder.
 - Keep one type per file. Preserve public APIs and validation behavior when
   making style-only changes.
 - Keep changes focused and update affected documentation in the same change set.
@@ -193,10 +193,10 @@ feat: add hat wobble
 ### Development commands
 
 ```shell
-dotnet restore Fluffy.sln
-dotnet build Fluffy.sln --configuration Release --no-restore
-dotnet test Fluffy.sln --configuration Release --no-build --no-restore
-dotnet format Fluffy.sln --verify-no-changes --severity info --no-restore
+dotnet restore Fluffy.slnx
+dotnet build Fluffy.slnx --configuration Release --no-restore
+dotnet test Fluffy.slnx --configuration Release --no-build --no-restore
+dotnet format Fluffy.slnx --verify-no-changes --severity info --no-restore
 dotnet run --project example --configuration Release --no-build
 ```
 

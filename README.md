@@ -5,9 +5,10 @@ A thinly veiled validation library
 ## Build and run
 
 The library, sample, and tests target .NET 10 and require the .NET 10 SDK.
+`Fluffy.slnx` is the XML solution containing all three projects.
 
 ```shell
-dotnet build Fluffy.sln --configuration Release
+dotnet build Fluffy.slnx --configuration Release
 dotnet run --project example --configuration Release
 ```
 
@@ -20,7 +21,7 @@ checks formatting and code style on pushes to `main` and on pull requests.
 results, failed-rule messages, the default error message, and `ApplyRule`.
 
 ```shell
-dotnet test Fluffy.sln --configuration Release
+dotnet test Fluffy.slnx --configuration Release
 ```
 
 ## Contributing
@@ -31,8 +32,8 @@ Repository formatting and Git defaults come from
 enabled during builds through `Directory.Build.props`.
 
 ```shell
-dotnet format Fluffy.sln --severity info
-dotnet format Fluffy.sln --verify-no-changes --severity info --no-restore
+dotnet format Fluffy.slnx --severity info
+dotnet format Fluffy.slnx --verify-no-changes --severity info --no-restore
 ```
 
 ## Usage
