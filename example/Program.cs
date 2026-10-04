@@ -1,43 +1,33 @@
-﻿using Fluffy;
 using System;
+using Fluffy;
 
-namespace Sample.Usage
+namespace Sample.Usage;
+
+internal static class Program
 {
-    internal static class Program
+    private static void Main()
     {
-        private static void Main()
+        var poco = new Poco()
         {
-            var poco = new Poco() { Id = 2, Name = "User not" };
-            var enforcer = new PocoValidator();
+            Id = 2,
+            Name = "User not"
+        };
+        var enforcer = new PocoValidator();
 
-            var (validation, errors) = enforcer.Resolve(poco);
+        var (validation, errors) = enforcer.Resolve(poco);
 
-            var gimme = poco.ApplyRule(d => d.Name == "Pandy");
+        _ = poco.ApplyRule(d => d.Name == "Pandy");
 
-            if (!validation)
+        if (!validation)
+        {
+            foreach (string error in errors)
             {
-                foreach (var error in errors)
-                    Console.WriteLine(error);
+                Console.WriteLine(error);
             }
-
-            Console.Write("Done");
-
-            Console.Read();
         }
-    }
 
-    public class PocoValidator : Fluf<Poco>
-    {
-        public PocoValidator()
-        {
-            Define(x => x.Id == 1, "Id does not match 1");
-            Define(x => x.Name == "User", "User is not user");
-        }
-    }
+        Console.Write("Done");
 
-    public record Poco
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        _ = Console.Read();
     }
 }

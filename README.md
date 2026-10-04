@@ -11,8 +11,9 @@ dotnet build Fluffy.sln --configuration Release
 dotnet run --project example --configuration Release
 ```
 
-GitHub Actions restores and builds the solution in Release mode on pushes to
-`main` and on pull requests. There are currently no automated test projects.
+GitHub Actions restores and builds the solution in Release mode and checks
+formatting and code style on pushes to `main` and on pull requests.
+There are currently no automated test projects.
 
 ## Contributing
 
@@ -28,28 +29,30 @@ dotnet format Fluffy.sln --verify-no-changes --severity info --no-restore
 
 ## Usage
 
-In essence i would want the library to function similarly to FluentValidation, in terms of API definition, but with a minimal footprint
+Define validation rules with `Fluf<T>.Define` and call `Resolve` to obtain a
+validation result and the messages for every failed rule. The sample provides
+`Poco` and `PocoValidator`:
 
 ```csharp
-
-var obj = new Poco() { Id = 1, Value = "Test" };
-
-PocoEnforcer<Poco> enforcer(obj);
-
-var result = enforcer.Resolve();
-
-
-class PocoEnforcer : Validator<Poco>
+var poco = new Poco()
 {
-	PocoEnforcer()
-	{
-		Define(x => x.Id == 1);
-		Define(x => x.Value != "Test");
-	}
-}
+    Id = 2,
+    Name = "User not"
+};
+var enforcer = new PocoValidator();
 
+var (validation, errors) = enforcer.Resolve(poco);
+
+foreach (string error in errors)
+{
+    Console.WriteLine(error);
+}
 ```
 
-But also including a bit of helpers to check for certain custom scenarios.
+`ApplyRule` evaluates a single predicate directly against an object:
+
+```csharp
+bool matches = poco.ApplyRule(x => x.Name == "User");
+```
 
 __Note:__ This is on alpha stage
