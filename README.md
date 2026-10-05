@@ -17,6 +17,8 @@ dotnet run --project example --configuration Release
 
 GitHub Actions restores, builds, and tests the solution in Release mode and
 checks formatting and code style on pushes to `main` and on pull requests.
+`.gitattributes` enforces CRLF checkouts for text files on every platform, with
+LF for shell scripts, to match `.editorconfig` during CI formatting checks.
 
 ## Tests
 
