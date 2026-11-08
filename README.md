@@ -17,7 +17,7 @@ dotnet run --project example --configuration Release
 
 ## Tests
 
-`tests\Fluffy.Tests` is an xUnit project with a small set of tests for validation
+`tests` contains an xUnit project with a small set of tests for validation
 results, failed-rule messages, the default error message, and `ApplyRule`.
 
 ```shell

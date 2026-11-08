@@ -16,6 +16,6 @@
     <Project Path="src\Fluffy.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests\Fluffy.Tests\Fluffy.Tests.csproj" />
+    <Project Path="tests\Fluffy.Tests.csproj" />
   </Folder>
 </Solution>

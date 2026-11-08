@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Fluffy.csproj" />
+    <ProjectReference Include="..\src\Fluffy.csproj" />
   </ItemGroup>
 
 </Project>
