@@ -7,7 +7,6 @@ A thinly veiled validation library
 
 ## Build and run
 
-The library, sample, and tests target .NET 10 and require the .NET 10 SDK.
 `Fluffy.slnx` is the XML solution containing all three projects.
 
 ```shell
