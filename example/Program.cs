@@ -7,14 +7,14 @@ internal static class Program
 {
     private static void Main()
     {
+        Fluf.RegisterValidators(typeof(PocoValidator).Assembly);
+
         var poco = new Poco()
         {
             Id = 2,
             Name = "User not"
         };
-        var enforcer = new PocoValidator();
-
-        var (validation, errors) = enforcer.Resolve(poco);
+        var (validation, errors) = poco.Resolve();
 
         _ = poco.ApplyRule(d => d.Name == "Pandy");
 
