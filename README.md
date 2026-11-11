@@ -30,19 +30,19 @@ submit a pull request.
 
 ## Usage
 
-Define validation rules with `Fluf<T>.Define` and call `Resolve` to obtain a
-validation result and the messages for every failed rule. The sample provides
-`Poco` and `PocoValidator`:
+Define validation rules with `Fluf<T>.Define`, register assemblies once at startup,
+and call `poco.Resolve()` to obtain a validation result and failed-rule messages.
+The sample provides `Poco` and `PocoValidator`:
 
 ```csharp
+Fluf.RegisterValidators(typeof(PocoValidator).Assembly);
+
 var poco = new Poco()
 {
     Id = 2,
     Name = "User not"
 };
-var enforcer = new PocoValidator();
-
-var (validation, errors) = enforcer.Resolve(poco);
+var (validation, errors) = poco.Resolve();
 
 foreach (string error in errors)
 {
